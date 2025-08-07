@@ -2,6 +2,11 @@ import { Router, Request, Response } from 'express';
 
 const router = Router();
 
+// Test endpoint
+router.get('/test', (req: Request, res: Response) => {
+  res.json({ message: 'Weather API is working!' });
+});
+
 // Get current weather for a location
 router.get('/current/:location', async (req: Request, res: Response) => {
   try {
