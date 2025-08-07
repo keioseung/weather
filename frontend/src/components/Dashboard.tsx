@@ -25,7 +25,10 @@ const Dashboard: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   // Mock data for demonstration
-  const mockWeatherData = {
+  const mockWeatherData: any = {
+    id: 'mock-1',
+    locationId: 'mock-location',
+    timestamp: new Date().toISOString(),
     temperature: 22,
     feelsLike: 24,
     humidity: 65,
@@ -38,12 +41,12 @@ const Dashboard: React.FC = () => {
     condition: 'clear' as const,
   };
 
-  const mockForecastData = [
-    { date: '2025-01-20', day: '오늘', temperature: { min: 18, max: 25 }, description: '맑음', icon: '☀️', condition: 'clear' as const, humidity: 60, windSpeed: 10, precipitation: 0 },
-    { date: '2025-01-21', day: '내일', temperature: { min: 16, max: 23 }, description: '구름 많음', icon: '⛅', condition: 'partly-cloudy' as const, humidity: 70, windSpeed: 15, precipitation: 20 },
-    { date: '2025-01-22', day: '수요일', temperature: { min: 14, max: 20 }, description: '비', icon: '🌧️', condition: 'rainy' as const, humidity: 85, windSpeed: 20, precipitation: 80 },
-    { date: '2025-01-23', day: '목요일', temperature: { min: 12, max: 18 }, description: '흐림', icon: '☁️', condition: 'cloudy' as const, humidity: 75, windSpeed: 12, precipitation: 30 },
-    { date: '2025-01-24', day: '금요일', temperature: { min: 15, max: 22 }, description: '맑음', icon: '☀️', condition: 'clear' as const, humidity: 65, windSpeed: 8, precipitation: 0 },
+  const mockForecastData: any[] = [
+    { id: 'mock-1', locationId: 'mock-location', date: '2025-01-20', day: '오늘', temperature: { min: 18, max: 25 }, description: '맑음', icon: '☀️', condition: 'clear' as const, humidity: 60, windSpeed: 10, precipitation: 0 },
+    { id: 'mock-2', locationId: 'mock-location', date: '2025-01-21', day: '내일', temperature: { min: 16, max: 23 }, description: '구름 많음', icon: '⛅', condition: 'partly-cloudy' as const, humidity: 70, windSpeed: 15, precipitation: 20 },
+    { id: 'mock-3', locationId: 'mock-location', date: '2025-01-22', day: '수요일', temperature: { min: 14, max: 20 }, description: '비', icon: '🌧️', condition: 'rainy' as const, humidity: 85, windSpeed: 20, precipitation: 80 },
+    { id: 'mock-4', locationId: 'mock-location', date: '2025-01-23', day: '목요일', temperature: { min: 12, max: 18 }, description: '흐림', icon: '☁️', condition: 'cloudy' as const, humidity: 75, windSpeed: 12, precipitation: 30 },
+    { id: 'mock-5', locationId: 'mock-location', date: '2025-01-24', day: '금요일', temperature: { min: 15, max: 22 }, description: '맑음', icon: '☀️', condition: 'clear' as const, humidity: 65, windSpeed: 8, precipitation: 0 },
   ];
 
   useEffect(() => {
