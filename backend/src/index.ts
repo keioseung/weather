@@ -25,7 +25,7 @@ const PORT = process.env.PORT || 5000;
 // Security middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:7001',
+  origin: process.env.CORS_ORIGIN || 'https://weather-production-7831.up.railway.app',
   credentials: true,
 }));
 
@@ -64,10 +64,11 @@ app.use(notFound);
 app.use(errorHandler);
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 WeatherPro API server running on port ${PORT}`);
   console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log(`🌐 Health check: http://localhost:${PORT}/health`);
+  console.log(`🔗 CORS Origin: ${process.env.CORS_ORIGIN || 'https://weather-production-7831.up.railway.app'}`);
 });
 
 export default app;
