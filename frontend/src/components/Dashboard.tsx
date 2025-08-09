@@ -9,7 +9,6 @@ import WeatherPanel from './WeatherPanel';
 import SearchBar from './SearchBar';
 import RecentSearches from './RecentSearches';
 import WeatherStats from './WeatherStats';
-import LoadingSpinner from './LoadingSpinner';
 
 const Dashboard: React.FC = () => {
   const {
@@ -18,8 +17,6 @@ const Dashboard: React.FC = () => {
     currentForecast,
     mapView,
     setMapView,
-    setLoading,
-    setError,
   } = useWeatherStore();
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -50,19 +47,11 @@ const Dashboard: React.FC = () => {
   ];
 
   useEffect(() => {
-    // Simulate loading weather data
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    // No-op: remove fake loading to avoid infinite loading UX
   }, []);
 
   const handleLocationSelect = (location: any) => {
-    setLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    // No-op placeholder; API integration can be added here
   };
 
   const handleSearch = (query: string) => {
