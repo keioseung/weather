@@ -1,7 +1,19 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { ApiResponse } from '@/types';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+// Runtime-safe base URL: prefer VITE_API_BASE_URL; otherwise, if running on Railway domain, use the known backend domain; else fallback to localhost
+const deriveApiBaseUrl = (): string => {
+  const envUrl = (import.meta as any)?.env?.VITE_API_BASE_URL as string | undefined;
+  if (envUrl && typeof envUrl === 'string' && envUrl.trim().length > 0) return envUrl;
+  const host = typeof window !== 'undefined' ? window.location.hostname : '';
+  if (host.endsWith('.railway.app')) {
+    // Hardcoded backend domain provided by user
+    return 'https://weather-production-5d39.up.railway.app/api';
+  }
+  return 'http://localhost:5000/api';
+};
+
+const API_BASE_URL = deriveApiBaseUrl();
 
 class ApiClient {
   private client: AxiosInstance;
