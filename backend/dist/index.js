@@ -21,11 +21,11 @@ const notFound_1 = require("./middleware/notFound");
 // Load environment variables
 dotenv_1.default.config();
 const app = (0, express_1.default)();
-const PORT = process.env.PORT || 5000;
+const PORT = parseInt(process.env.PORT ?? '', 10) || 5000;
 // Security middleware
 app.use((0, helmet_1.default)());
 app.use((0, cors_1.default)({
-    origin: process.env.CORS_ORIGIN || 'http://localhost:7001',
+    origin: process.env.CORS_ORIGIN || 'https://weather-production-3d13.up.railway.app',
     credentials: true,
 }));
 // Rate limiting
@@ -58,9 +58,10 @@ app.use('/api/user', user_1.default);
 app.use(notFound_1.notFound);
 app.use(errorHandler_1.errorHandler);
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 WeatherPro API server running on port ${PORT}`);
     console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
     console.log(`🌐 Health check: http://localhost:${PORT}/health`);
+    console.log(`🔗 CORS Origin: ${process.env.CORS_ORIGIN || 'https://weather-production-7831.up.railway.app'}`);
 });
 exports.default = app;
