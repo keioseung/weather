@@ -8,7 +8,7 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 import ErrorBoundary from '@/components/ErrorBoundary';
 
 const App: React.FC = () => {
-  const { isLoading, error } = useWeatherStore();
+  const { error } = useWeatherStore();
 
   return (
     <ErrorBoundary>
@@ -17,17 +17,7 @@ const App: React.FC = () => {
         
         <main className="container mx-auto px-4 py-8">
           <AnimatePresence mode="wait">
-            {isLoading ? (
-              <motion.div
-                key="loading"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="flex items-center justify-center min-h-[60vh]"
-              >
-                <LoadingSpinner />
-              </motion.div>
-            ) : error ? (
+            {error ? (
               <motion.div
                 key="error"
                 initial={{ opacity: 0, y: 20 }}
