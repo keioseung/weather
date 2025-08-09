@@ -20,12 +20,12 @@ import { notFound } from './middleware/notFound';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = parseInt(process.env.PORT ?? '', 10) || 5000;
 
 // Security middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'https://weather-production-7831.up.railway.app',
+  origin: process.env.CORS_ORIGIN || 'https://weather-production-3d13.up.railway.app',
   credentials: true,
 }));
 
