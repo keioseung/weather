@@ -27,6 +27,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
           onChange={(e) => setQuery(e.target.value)}
           placeholder="도시명이나 국가명을 입력하세요..."
           className="input-field pl-12 pr-4 py-4 text-lg"
+          id="search-input"
+          name="search"
+          aria-label="검색어 입력"
+          autoComplete="search"
         />
         <button
           type="submit"
