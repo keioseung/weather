@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useWeatherStore } from '@/store/weatherStore';
 import Header from '@/components/Header';
 import Dashboard from '@/components/Dashboard';
-import LoadingSpinner from '@/components/LoadingSpinner';
 import ErrorBoundary from '@/components/ErrorBoundary';
 
 const App: React.FC = () => {
